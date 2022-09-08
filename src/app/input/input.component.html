@@ -1,0 +1,16 @@
+<div class="field">
+  <label class="label">{{label}}</label>
+  <div class="control">
+    <input class="input" [ngClass]="{'is-danger':showErrors()}" [formControl]="control" type="text">
+  </div>
+
+  <ng-container *ngIf="showErrors()">
+    <div class="help is-danger" *ngIf="control.errors['required']">Value is Required</div>
+    <div class="help is-danger" *ngIf="control.errors['minlength']">
+      Vaule you entered is
+      {{control.errors['minlength'].actualLength | json}}
+      characters long,but it must be at least
+      {{control.errors['minlength'].requiredLength | json}}
+    </div>
+  </ng-container> 
+</div>
